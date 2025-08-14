@@ -36,14 +36,27 @@ try:
 
     insert_scipt = 'INSERT INTO employee(id, name, salary, dept_id) values (%s, %s, %s, %s)'
     insert_values =[(1,'Point', 27000, 'mapping dept'), (2, 'Stun', 15000, 'geology_dept'), 
-                    (3, 'Kofi',14000,'gis_dept'), (4, 'Range', 25000,'mapping')]
+                    (3, 'Kofi',14000,'gis_dept'), (4, 'Range', 25000,'mapping'), (5, 'King',13000, 'mine_dept')]
     for value in insert_values:
         curs.execute(insert_scipt,value)
 
+# update the record
+    update_script = 'UPDATE employee SET salary = salary + (salary * 0.5)'
+    curs.execute(update_script)   
+
+    # delete record
+    delete_script = 'DELETE FROM employee WHERE  name = %s'
+    delete_value = ('Stun',)
+    curs.execute(delete_script,delete_value)
+
+
     # view items in table each on it's own line
-    curs.execute('Select * from employee')
+    curs.execute('SELECT * FROM employee')
     for record in curs.fetchall():
         print(record[1], record[2])
+
+    
+
 
     conn.commit()
 except Exception as e:
