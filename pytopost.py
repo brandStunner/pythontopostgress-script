@@ -55,8 +55,6 @@ try:
             for record in curs.fetchall():
                 print(record[1], record[2])
 
-
-        conn.commit()
 except Exception as e:
     print(e)
 
