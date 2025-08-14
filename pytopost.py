@@ -10,7 +10,6 @@ port_id = 5432
 
 # set connection and cursor to none
 conn = None
-curs = None
 try:
     with psycopg2.connect(
         host = hostname,
